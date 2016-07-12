@@ -1,0 +1,35 @@
+@(title: String, session: Session)(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+        @List("stylesheets/bootstrap.css",
+            "stylesheets/bootflat.css",
+            "stylesheets/common.css",
+            "stylesheets/article.css").map { css =>
+            <link rel="stylesheet" media="screen" href="@routes.Assets.versioned(css)">
+        }
+
+        @List("javascripts/jquery/jquery-2.1.4.min.js",
+            "javascripts/bootstrap.js").map { javascript =>
+            <script src="@routes.Assets.versioned(javascript)" type="text/javascript"></script>
+        }
+    </head>
+    <body>
+        <div class="article-masthead">
+            <div class="container">
+            @header.header(session)
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+            @content
+            </div>
+        </div>
+    </body>
+</html>

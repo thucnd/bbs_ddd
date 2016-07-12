@@ -1,0 +1,30 @@
+@(article: domain.model.article.Article)(implicit request: RequestHeader, messages: Messages, session: Session)
+
+@layouts.main("Article information", session) {
+
+    <div class="panel panel-default box-line">
+        <div class="panel-body">
+
+            <div class="article-title">
+                @article.title
+            </div>
+            <div class="article-info">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                @article.user.name &nbsp;
+                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                @article.user.company.name &nbsp;
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                @article.createdDate.toString("yyyy-MM-dd HH:mm")
+            </div>
+            <div class="article-body box-line">
+            @Html(article.content.replace("\n", "<br>"))
+            </div>
+            <div class="box-line">
+                <a href="/"><span class="glyphicon glyphicon-share-alt" aria-hidden="true">Back</span></a>
+            </div>
+        </div>
+    </div>
+
+
+}
+

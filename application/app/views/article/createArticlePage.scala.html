@@ -1,0 +1,44 @@
+@import forms.ArticleForm
+@(articleForm: Form[ArticleForm])(implicit request: RequestHeader, messages: Messages, session: Session)
+@layouts.main("Add a new Article", session) {
+
+    @if(request.flash.get("error")) {
+        <div class="alert alert-danger box-line" role="alert" >
+        @request.flash.get("error").getOrElse("")
+        </div>
+    }
+
+    <div class="panel panel-default box-line">
+        <div class="panel-body">
+            <div class="box-line">
+
+            @helper.form(action = controllers.article.routes.ArticleController.create) {
+                <dl class="dl-horizontal">
+                    @helper.inputText(articleForm("title"),
+                        'id -> "title",
+                        'class -> "form-control",
+                        'placeholder -> "Enter your title",
+                        '_label -> "Title",
+                        'required -> "required",
+                        'maxlength -> 40,
+                        '_help -> "")
+                    @helper.textarea(articleForm("content"),
+                        'id -> "content",
+                        'class -> "form-control",
+                        'placeholder -> "Enter your content",
+                        '_label -> "Comments",
+                        'required -> "required",
+                        'maxlength -> 200,
+                        'rows -> 5,
+                        '_help -> "")
+
+                    <dd>
+                        <a class="btn btn-primary" href="/" role="button">Back</a>
+                        <input class="btn btn-info" type="submit" value="Create New">
+                    </dd>
+                </dl>
+            }
+            </div>
+        </div>
+    </div>
+}

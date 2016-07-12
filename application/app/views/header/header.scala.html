@@ -1,0 +1,13 @@
+@(session: Session)
+<nav class="dashboard-nav">
+    <div class="navbar-header">
+        <h4><a class="dashboard-header" href="/">BBS</a></h4>
+    </div>
+    <div class="navbar-right">
+        @session.get("name").map { name =>
+            @user.detail(name)
+        }.getOrElse{
+            @user.login()
+        }
+    </div>
+</nav>

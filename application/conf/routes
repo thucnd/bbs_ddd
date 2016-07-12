@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+GET         /                          @controllers.article.ArticleController.showListPage
+GET         /article/:articleId        @controllers.article.ArticleController.view(articleId: String)
+
+GET         /article                   @controllers.article.ArticleController.showCreatePage
+POST        /article                   @controllers.article.ArticleController.create
+
+GET         /login                     @controllers.login.LoginController.index
+POST        /login                     @controllers.login.LoginController.authenticate
+
+GET         /signup                    @controllers.signup.SignUpController.index
+POST        /signup                    @controllers.signup.SignUpController.register
+
+GET         /logout                    @controllers.logout.LogoutController.logout
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file              controllers.Assets.versioned(path="/public", file: Asset)

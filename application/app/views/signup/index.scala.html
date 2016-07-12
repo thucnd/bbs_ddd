@@ -1,0 +1,83 @@
+@import forms.UserForm
+@(signupForm: Form[UserForm])(implicit messages: Messages, flash: Flash)
+
+@layouts.lglayout("Sign Up") {
+    <div id="element-box" class="signup-box" >
+    @helper.form(action = controllers.signup.routes.SignUpController.register) {
+        <div class="login-form">
+            <div class="login-title">
+                <h3>
+                    <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                    <b>Register</b>
+                </h3>
+            </div>
+
+            @if(flash.get("error")) {
+                <div class="alert alert-danger" role="alert" >
+                @flash.get("error").getOrElse("")
+                </div>
+            }
+
+            @helper.inputText(signupForm("name"),
+                'id -> "name",
+                'class -> "form-control",
+                'placeholder -> "Enter your name",
+                '_label -> "Name",
+                '_help -> "")
+
+            <dl class="" id="company_field">
+                <dt><label for="company">Company</label></dt>
+                <dd>
+                    <label class="radio-inline">
+                        <input type="radio" name="companyType" id="companyType" checked value="1">Septeni Technology
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="companyType" id="companyType" value="2">Septeni Original
+                    </label>
+                </dd>
+            </dl>
+
+
+            <div class="box-line">
+                <div class="box-left">
+                @helper.inputText(signupForm("emailName"),
+                    'id -> "emailName",
+                    'class -> "form-control",
+                    'placeholder -> "Enter your email",
+                    '_label -> "Email",
+                    '_help -> "")
+                </div>
+                <div class="box-left" style="padding-top: 30px ;">@Html("@")<span id="email-format">septeni-technology.jp</span></div>
+                <div class="box-clear"></div>
+            </div>
+
+
+            @helper.inputPassword(signupForm("password"),
+                'id -> "password",
+                'class -> "form-control",
+                'placeholder -> "Enter your password",
+                '_label -> "Password",
+                '_help -> "",
+                'minlength -> 6,
+                'maxlength -> 16)
+
+            @helper.inputPassword(signupForm("repassword"),
+                'id -> "repassword",
+                'class -> "form-control",
+                'placeholder -> "Enter your re-password",
+                '_label -> "Re-Password",
+                '_help -> "",
+                '_error -> signupForm.globalError,
+                'minlength -> 6,
+                'maxlength -> 16)
+
+            <div class="box-line">
+                <input class="btn btn-info" type="submit" value="Register">
+                <a class="btn btn-warning" href="/">Cancel</a>
+            </div>
+        </div>
+    }
+
+    </div>
+}
+

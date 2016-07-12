@@ -1,0 +1,11 @@
+error.emailIsNotRecognize=email is not recognize
+error.noSpecialCharacter=no special character
+error.login.password=Your passwod incorrect
+error.emailOrPassword.wrong=Email or password incorrect
+error.email.match=Your input email are diffrent with your email
+error.password.invalid=Passwords must match
+error.email.existing=Email already existing
+
+success.createArticleSuccess=Create Article Successful
+message.logout.success=You have been logged out
+message.user.create.success=Create user success

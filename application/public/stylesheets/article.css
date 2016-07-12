@@ -1,0 +1,51 @@
+/*
+ * Globals
+ */
+
+body {
+    background-color: #E9EAED;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #555;
+}
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/*
+ * Masthead for nav
+ */
+
+.article-masthead {
+    background-color: #428bca;
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+}
+
+.article-info {
+    display: block;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.article-title {
+    display: block;
+    color: #3bafda;
+    padding: 5px 0;
+}
+
+.box-line {
+    display: block;
+}
+
+.user-detail {
+    font-size: 12px;
+    margin-right: 5px;
+    color: #FFFFFF;
+}

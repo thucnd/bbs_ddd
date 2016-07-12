@@ -1,0 +1,45 @@
+@(articles: Seq[domain.model.article.Article])(implicit request: RequestHeader, messages: Messages, session: Session)
+
+    @layouts.main("Welcome to BBS", session) {
+        @session.get("email").map { _ =>
+            <div class="box-line">
+                <a class="btn btn-primary btn-sm" href="/article" role="button">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    New Article
+                </a>
+
+                <a class="btn btn-primary btn-sm" href="/signup" role="button">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    New User
+                </a>
+            </div>
+        }
+
+        @request.flash.get("success").map { msg =>
+            <div class="box-line alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @msg
+            </div>
+        }
+        @articles.map { article =>
+            <div class="panel panel-default box-line">
+                <div class="panel-body">
+                    <div class="article-body">
+                        <a href="/article/@article.id.value">@article.title</a>
+                    </div>
+                    <div class="article-info">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        @article.user.name &nbsp;
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                        @article.user.company.name &nbsp;
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        @article.createdDate.toString("yyyy-MM-dd HH:mm")
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if(articles.isEmpty) {
+            <div class="box-line">No articles</div>
+        }
+    }

@@ -1,0 +1,9 @@
+.signup-box
+{
+    margin: 0 auto;
+    width: 500px;
+}
+
+div#element-box.signup-box{
+    margin-top: 5%;
+}

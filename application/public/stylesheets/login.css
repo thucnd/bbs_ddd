@@ -1,0 +1,48 @@
+#content{
+    background: #fff;
+    clear: both;
+    color: #333;
+    padding: 100px 20px 40px 20px;
+    overflow: auto;
+}
+
+.login-box
+{
+    margin: 0 auto;
+    width: 500px;
+}
+
+.login-form {
+    position: relative;
+    padding: 5px 23px 20px;
+    background-color: #EDEFF1;
+    border-radius: 6px;
+}
+
+div#element-box.login-box{
+    margin-top: 10%;
+}
+
+div#element-box.login-box #section-box{
+    float:none;
+    width:60%;
+    margin:0 auto;
+}
+
+div#element-box.login h1,div#element-box.login label{
+    color:#333;
+    text-shadow:0px 1px 1px #FFF;
+    width:auto;
+}
+
+form#form-login .inputbox{
+    width:70%;
+}
+
+html, body, #container{
+    background-color: #1abc9c;
+}
+
+.login-title {
+    color: #1abc9c;
+}

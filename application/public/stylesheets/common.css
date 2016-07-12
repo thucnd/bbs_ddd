@@ -1,0 +1,27 @@
+.box-line{
+    display: block;
+    margin: 10px 0;
+}
+
+.box-left{
+    float: left;
+}
+
+.box-right{
+    float: right;
+}
+
+.box-clear {
+    clear:both;
+}
+
+.css-form input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+.error {
+    font-size: 11px;
+    color: red;
+    font-weight: bolder;
+}
+

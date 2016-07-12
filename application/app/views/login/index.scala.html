@@ -1,0 +1,52 @@
+@import forms.LoginForm
+@(loginForm: Form[LoginForm])(implicit messages: Messages, flash: Flash)
+
+@layouts.lglayout("Welcome To Login") {
+    <div id="element-box" class="login-box" >
+    @helper.form(action = controllers.login.routes.LoginController.authenticate) {
+        <div class="login-form">
+            <div class="login-title">
+                <h3>
+                    <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                    <b>Login</b>
+                </h3>
+            </div>
+            @if(flash.get("success")) {
+                <div class="alert alert-success" role="alert" >
+                @flash.get("success").getOrElse("")
+                </div>
+            }
+
+            @if(flash.get("error")) {
+                <div class="alert alert-danger" role="alert" >
+                @flash.get("error").getOrElse("")
+                </div>
+            }
+
+            @helper.inputText(loginForm("email"),
+                'id -> "email",
+                'class -> "form-control",
+                'placeholder -> "Enter your email",
+                '_label -> "Email",
+                'required -> "required",
+                '_help -> "")
+
+            @helper.inputPassword(loginForm("password"),
+                'id -> "password",
+                'class -> "form-control",
+                'placeholder -> "Enter your password",
+                '_label -> "Password",
+                '_help -> "",
+                'minlength -> 6,
+                'maxlength -> 16)
+
+            <div class="box-line">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+            </div>
+            <div class="box-line">
+                <a class="btn btn-warning btn-lg btn-block"  href="/">Cancel</a>
+            </div>
+        </div>
+    }
+    </div>
+}
